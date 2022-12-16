@@ -1,16 +1,15 @@
 import React, { useState } from "react";
-import "./stylesheet/Style.css";
-import AddUser from "./components/AddUser";
-import EditUser from "./components/EditUser";
+import "./stylesheet/index.css";
+import AddUser from "./components/Operations/AddUser";
+import EditUser from "./components/Operations/EditUser";
 import UserList from "./components/Dashboard/UserList";
 import { AppContext } from "./context/context";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import Header from "./components/Header";
-import useLocalStorage from "./components/useLocalStorage";
+import Header from "./components/Header/Header";
+import useLocalStorage from "./components/LocalStorage/UseLocalStorage";
 
 function App() {
   const [users, setUsers] = useLocalStorage("students", []);
-
   const dispatchUserEvent = (actionType: any, payload: any) => {
     switch (actionType) {
       case "ADD_USER":
@@ -22,11 +21,6 @@ function App() {
         );
         return;
       case "EDIT_USER":
-        const filteredData = users.find(
-          (user: { id: any }) => user.id === payload.editedUser.id
-        );
-        console.log("filteredData", filteredData);
-
         setUsers(
           users.map((obj: { id: any }) => {
             if (obj.id === payload.editedUser.id) {

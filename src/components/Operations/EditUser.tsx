@@ -1,28 +1,22 @@
 import React, { useContext, useEffect, useState, ChangeEvent } from "react";
-import { AppContext } from "../context/context";
+import { AppContext } from "../../context/context";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-
-interface UserData {
-  name: string;
-  age: number;
-  bio: string;
-}
+import "./stylesheet/operations.css";
 
 const EditUser = () => {
   const { users } = useContext(AppContext);
   let navigate = useNavigate();
-  // const { token } = useParams<{token?: string}>();
   let { id } = useParams();
   let value = parseInt(id!);
-  // console.log("userdata", userdata);
   const { dispatchUserEvent } = useContext(AppContext);
-  const [name, setName] = useState("");
-  const [age, setAge] = React.useState<number | undefined>();
-  const [bio, setBio] = useState("");
-  const [error, setError] = useState("");
+  const [name, setName] = useState<string | undefined>();
+  const [age, setAge] = useState<number | undefined>();
+  const [bio, setBio] = useState<string | undefined>();
+  const [error, setError] = useState<string | undefined>();
   const min = 1;
   const max = 100;
+
   const useData = () => {
     const user = { id: value, name, age, bio };
     dispatchUserEvent("EDIT_USER", { editedUser: user });
@@ -32,19 +26,16 @@ const EditUser = () => {
   const filteredData = users.filter(
     (user: { id: number | undefined }) => user.id === value
   );
+
   const [numValue, setNumValue] = useState(filteredData[0].age);
-  // console.log("filteredData", filteredData[0]);
+
   useEffect(() => {
-    // const ageStore = filteredData[0].age;
-    // const {id, name, age, bio} : [...filteredData[0]];
     const {
-      id,
       name,
       age,
       bio,
     }: { id: number; name: string; age: number; bio: string } = filteredData[0];
 
-    // console.log("all filtered data", id, name, age, bio);
     setName(name);
     setAge(age);
     setBio(bio);
@@ -59,23 +50,19 @@ const EditUser = () => {
     }
   };
 
-  const onAgeChange = (e: ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value);
-    const newValue = e.target.value;
-  };
-
   const maxLengthCheck = (object: any) => {
     const value = Math.max(min, Math.min(max, Number(object.target.value)));
-    console.log("value", value);
     setNumValue(value);
   };
 
   return (
-    <div>
+    <section className="add-user edit-user">
       <div className="container">
-        <h3>Edit User</h3>
+        <div className="title text-center">
+          <h3 className="mb-0">Edit User</h3>
+        </div>
         <div className="row flex-column align-items-center py-4">
-          <div className="col-3">
+          <div className="col-12 col-sm-8 col-lg-4">
             <div className="inner-row p-2">
               <div className="p-3">
                 <input
@@ -96,8 +83,6 @@ const EditUser = () => {
                   type="number"
                   value={numValue}
                   onInput={maxLengthCheck}
-                  // onChange={onAgeChange}
-                  // placeholder={age}
                 />
               </div>
               <div className="p-3">
@@ -116,7 +101,7 @@ const EditUser = () => {
                   {error}
                 </strong>
               )}
-              <div className="p-3">
+              <div className="p-3 text-center">
                 <button
                   className="common-button-style-1"
                   onClick={handleEditUser}
@@ -128,7 +113,7 @@ const EditUser = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

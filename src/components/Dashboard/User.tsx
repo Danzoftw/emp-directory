@@ -41,8 +41,8 @@ const User = ({ user }: { user: any }) => {
 
   return (
     <div className="user m-2 position-relative">
-      <div className="p-4">
-        <div className="student-data mb-3">
+      <div className="p-3 p-lg-4">
+        <div className="student-data mb-3 text-center">
           <h1>{user.id}</h1>
           <h3>{user.name}</h3>
           <h4>{user.age}</h4>
@@ -51,9 +51,9 @@ const User = ({ user }: { user: any }) => {
           </div>
         </div>
 
-        <div className="student-btns">
+        <div className="student-btns text-center">
           <button
-            className="me-2 common-button-style-1"
+            className="me-lg-2 mb-3 mb-lg-0 common-button-style-1"
             onClick={() => navigate(`/edit/${user.id}`)}
           >
             Edit student
