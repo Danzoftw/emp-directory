@@ -6,18 +6,18 @@
       "dom.iterable",
       "esnext"
     ],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "noFallthroughCasesInSwitch": true,
+    "allowJs": true, //Checks errors in js files in present
+    "skipLibCheck": true, //Skip type checking of declaration files
+    "esModuleInterop": true, //https://www.typescriptlang.org/tsconfig#esModuleInterop
+    "allowSyntheticDefaultImports": true, //allowSyntheticDefaultImports allows you to write an import like: ts. import React from "react"; instead of: ts. (eg: import React from "react";)
+    "strict": true, //fores you to follow specific rules of writing code in TypeScript
+    "forceConsistentCasingInFileNames": true, //file case sensitive imports (eg: file.ts -> ./File.js)
+    "noFallthroughCasesInSwitch": true, //Ensures that any non-empty case inside a switch statement includes either break or return , prevents bugs
     "module": "esnext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
+    "moduleResolution": "node", //Specify the module resolution strategy: (eg: node, , node16, classic)
+    "resolveJsonModule": true, // allows for importing, extracting types from and generating . json files. Example # // tsconfig.json
+    "isolatedModules": true, //Setting the isolatedModules flag tells TypeScript to warn you if you write certain code that can’t be correctly interpreted by a single-file transpilation process.
+    "noEmit": true, //The noEmit option tells TypeScript that we only want to run type checking and do not want the compiler to output any transpiled code
     "jsx": "react-jsx"
   },
   "include": [
