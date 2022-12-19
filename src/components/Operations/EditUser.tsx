@@ -3,6 +3,7 @@ import { AppContext } from "../../context/context";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "./stylesheet/operations.css";
+import { maxLengthCheck } from "../functions/maxLengthCheck";
 
 const EditUser = () => {
   const { users } = useContext(AppContext);
@@ -10,10 +11,10 @@ const EditUser = () => {
   let { id } = useParams();
   let value = parseInt(id!);
   const { dispatchUserEvent } = useContext(AppContext);
-  const [name, setName] = useState<string | undefined>();
-  const [age, setAge] = useState<number | undefined>();
-  const [bio, setBio] = useState<string | undefined>();
-  const [error, setError] = useState<string | undefined>();
+  const [name, setName] = useState<string | undefined>("");
+  const [age, setAge] = useState<number | undefined>(0);
+  const [bio, setBio] = useState<string | undefined>("");
+  const [error, setError] = useState<string | undefined>("");
   const min = 1;
   const max = 100;
 
@@ -50,11 +51,6 @@ const EditUser = () => {
     }
   };
 
-  const maxLengthCheck = (object: any) => {
-    const value = Math.max(min, Math.min(max, Number(object.target.value)));
-    setNumValue(value);
-  };
-
   return (
     <section className="add-user edit-user">
       <div className="container">
@@ -82,7 +78,9 @@ const EditUser = () => {
                   required
                   type="number"
                   value={numValue}
-                  onInput={maxLengthCheck}
+                  onInput={(e) =>
+                    maxLengthCheck(e, min, max, setNumValue, setAge)
+                  }
                 />
               </div>
               <div className="p-3">

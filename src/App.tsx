@@ -23,6 +23,7 @@ function App() {
       case "EDIT_USER":
         setUsers(
           users.map((obj: { id: any }) => {
+            console.log("payload.editedUser.age", payload.editedUser);
             if (obj.id === payload.editedUser.id) {
               return {
                 ...obj,

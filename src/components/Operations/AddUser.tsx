@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { AppContext } from "../../context/context";
 import UserList from "../Dashboard/UserList";
 import "./stylesheet/operations.css";
+import { maxLengthCheck } from "../functions/maxLengthCheck";
 
 const AddUser = () => {
   const { dispatchUserEvent } = useContext(AppContext);
@@ -14,12 +15,6 @@ const AddUser = () => {
   const [numValue, setNumValue] = useState(0);
   const [placeHolderText] = useState("Age");
   const [focus, setFocus] = useState(false);
-
-  const maxLengthCheck = (object: any) => {
-    const value = Math.max(min, Math.min(max, Number(object.target.value)));
-    setNumValue(value);
-    setAge(value);
-  };
 
   const handleAddUser = (e: any) => {
     e.preventDefault();
@@ -70,7 +65,9 @@ const AddUser = () => {
                   maxLength={2}
                   placeholder="Age"
                   onClick={handleValue}
-                  onInput={maxLengthCheck}
+                  onInput={(e) =>
+                    maxLengthCheck(e, min, max, setNumValue, setAge)
+                  }
                   value={!focus ? placeHolderText : numValue}
                 />
               </div>
