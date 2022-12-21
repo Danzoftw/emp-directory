@@ -1,5 +1,7 @@
 {
+  "include": ["src/**/*"],
   "compilerOptions": {
+    "typeRoots" : ["node_modules/@types", "src/types"],
     "target": "es5",
     "lib": [
       "dom",
@@ -7,6 +9,7 @@
       "esnext"
     ],
     "allowJs": true, //Checks errors in js files in present
+    "declaration": true,
     "skipLibCheck": true, //Skip type checking of declaration files
     "esModuleInterop": true, //https://www.typescriptlang.org/tsconfig#esModuleInterop
     "allowSyntheticDefaultImports": true, //allowSyntheticDefaultImports allows you to write an import like: ts. import React from "react"; instead of: ts. (eg: import React from "react";)
@@ -19,8 +22,5 @@
     "isolatedModules": true, //Setting the isolatedModules flag tells TypeScript to warn you if you write certain code that can’t be correctly interpreted by a single-file transpilation process.
     "noEmit": true, //The noEmit option tells TypeScript that we only want to run type checking and do not want the compiler to output any transpiled code
     "jsx": "react-jsx"
-  },
-  "include": [
-    "src"
-  ]
+  }
 }

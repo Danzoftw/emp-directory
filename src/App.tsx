@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./stylesheet/index.css";
 import AddUser from "./components/Operations/AddUser";
 import EditUser from "./components/Operations/EditUser";
 import UserList from "./components/Dashboard/UserList";
@@ -8,9 +7,12 @@ import { AppContext } from "./context/context";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Header from "./components/Header/Header";
 import UseLocalStorage from "./components/LocalStorage/UseLocalStorage";
+// import "./fonts/Apercu/Apercu-Bold.ttf";
+// import "./fonts/Apercu/ApercuPro-Bold.ttf";
 
 function App() {
   const [users, setUsers] = UseLocalStorage("students", []);
+  // const [users, setUsers] = ("students", []);
 
   const DispatchUserEvent = (actionType: any, payload: any) => {
     switch (actionType) {

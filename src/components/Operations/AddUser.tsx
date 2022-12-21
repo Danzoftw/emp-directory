@@ -14,7 +14,7 @@ const AddUser = () => {
   const [error, setError] = useState("");
   const min = 1;
   const max = 100;
-  const [numValue, setNumValue] = useState(0);
+  const [numValue, setNumValue] = useState<number | string>(0);
   const [placeHolderText] = useState("Age");
   const [focus, setFocus] = useState(false);
 
@@ -43,6 +43,7 @@ const AddUser = () => {
 
   const handleValue = (e: any) => {
     setFocus(true);
+    setNumValue("");
   };
 
   return (
@@ -81,11 +82,11 @@ const AddUser = () => {
                     <input
                       className="form-control"
                       min={0}
-                      type="number"
+                      type="string"
                       max={100}
                       maxLength={2}
                       placeholder="Age"
-                      onClick={handleValue}
+                      onFocus={handleValue}
                       onInput={(e) =>
                         maxLengthCheck(e, min, max, setNumValue, setAge)
                       }

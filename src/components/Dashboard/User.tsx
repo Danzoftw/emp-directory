@@ -47,7 +47,7 @@ const User = ({ user }: { user: any }) => {
   return (
     <div className="user m-2 position-relative py-4">
       <div className="p-3 p-lg-4">
-        <div className="student-data mb-3 d-lg-flex flex-lg-column align-items-lg-center">
+        <div className="student-data mb-3 d-lg-flex flex-lg-column ">
           <div className="common-div name d-flex">
             <div className="name">{"Name"}</div>
             <h5 className="ps-3">{user.name}</h5>

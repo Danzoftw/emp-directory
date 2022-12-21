@@ -9,3 +9,7 @@ header .dropdown-item a {
   bottom: 0;
   right: 0;
 }
+header .title h1 {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+}

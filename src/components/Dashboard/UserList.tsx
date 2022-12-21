@@ -33,7 +33,7 @@ const UserList = () => {
           </div>
           <div className="row">
             {filteredData.map((user: { id: React.Key | null | undefined }) => (
-              <div className="col-12 col-md-6 col-lg-4 col-xl-3 px-lg-0 px-md-0 py-2">
+              <div className="col-12 col-md-6 col-lg-4 col-xl-3 px-lg-0 px-md-0 py-2 py-lg-0">
                 <Suspense fallback={<div>Loading...</div>}>
                   <User key={user.id} user={user} />
                 </Suspense>
