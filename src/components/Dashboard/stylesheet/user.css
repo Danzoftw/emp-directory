@@ -1,3 +1,10 @@
+section.user-list .user-list-data .search-outer .search-title p {
+  font-size: 1.5rem;
+}
+section.user-list .user-list-data .search-outer input {
+  outline: none;
+  border-radius: 5px;
+}
 section.user-list .user-list-data .user {
   box-shadow: 0px 0px 7px #e1d4d4;
 }
@@ -15,4 +22,9 @@ section.user-list .user-list-data .user .confirm-delete button {
   border: 1px solid black;
   border-radius: 15px;
   padding: 4px 12px 4px 12px;
+}
+section.user-list .user-list-data .user .student-data .common-div .name,
+section.user-list .user-list-data .user .student-data .common-div .age,
+section.user-list .user-list-data .user .student-data .common-div .bio {
+  width: 50px;
 }

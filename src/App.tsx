@@ -3,14 +3,16 @@ import "./stylesheet/index.css";
 import AddUser from "./components/Operations/AddUser";
 import EditUser from "./components/Operations/EditUser";
 import UserList from "./components/Dashboard/UserList";
+// import Filter from "./components/Filter/Filter";
 import { AppContext } from "./context/context";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Header from "./components/Header/Header";
-import useLocalStorage from "./components/LocalStorage/UseLocalStorage";
+import UseLocalStorage from "./components/LocalStorage/UseLocalStorage";
 
 function App() {
-  const [users, setUsers] = useLocalStorage("students", []);
-  const dispatchUserEvent = (actionType: any, payload: any) => {
+  const [users, setUsers] = UseLocalStorage("students", []);
+
+  const DispatchUserEvent = (actionType: any, payload: any) => {
     switch (actionType) {
       case "ADD_USER":
         setUsers([...users, payload.newUser]);
@@ -23,7 +25,6 @@ function App() {
       case "EDIT_USER":
         setUsers(
           users.map((obj: { id: any }) => {
-            console.log("payload.editedUser.age", payload.editedUser);
             if (obj.id === payload.editedUser.id) {
               return {
                 ...obj,
@@ -43,14 +44,13 @@ function App() {
 
   return (
     <div className="App">
-      <AppContext.Provider value={{ users, setUsers, dispatchUserEvent }}>
+      <AppContext.Provider value={{ users, setUsers, DispatchUserEvent }}>
         <BrowserRouter>
           <Header />
           <Routes>
             <Route path="/" element={<AddUser />} />
             <Route path="/userlist/" element={<UserList />} />
             <Route path="/edit/:id" element={<EditUser />} />
-            {/* <Route component={() => <Redirect to="/" />} /> */}
           </Routes>
         </BrowserRouter>
       </AppContext.Provider>

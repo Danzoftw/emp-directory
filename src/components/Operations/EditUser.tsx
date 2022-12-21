@@ -10,7 +10,7 @@ const EditUser = () => {
   let navigate = useNavigate();
   let { id } = useParams();
   let value = parseInt(id!);
-  const { dispatchUserEvent } = useContext(AppContext);
+  const { DispatchUserEvent } = useContext(AppContext);
   const [name, setName] = useState<string | undefined>("");
   const [age, setAge] = useState<number | undefined>(0);
   const [bio, setBio] = useState<string | undefined>("");
@@ -20,7 +20,7 @@ const EditUser = () => {
 
   const useData = () => {
     const user = { id: value, name, age, bio };
-    dispatchUserEvent("EDIT_USER", { editedUser: user });
+    DispatchUserEvent("EDIT_USER", { editedUser: user });
     navigate("/userlist");
   };
 

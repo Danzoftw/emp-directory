@@ -4,7 +4,7 @@ interface AppContextInterface {
   id?: number;
   age?: number;
   state?: any;
-  dispatchUserEvent?: any;
+  DispatchUserEvent?: any;
   users?: any;
   setUsers?: any;
 }

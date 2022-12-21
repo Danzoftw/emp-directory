@@ -2,8 +2,13 @@ import React, { useState } from "react";
 import { useContext } from "react";
 import { AppContext } from "../../context/context";
 import { useNavigate } from "react-router-dom";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
 
 const User = ({ user }: { user: any }) => {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   let navigate = useNavigate();
 
   const [popup, setPopup] = useState({
@@ -11,7 +16,7 @@ const User = ({ user }: { user: any }) => {
     id: null,
   });
 
-  const { dispatchUserEvent } = useContext(AppContext);
+  const { DispatchUserEvent } = useContext(AppContext);
 
   const handleRemoveUser = (e: any) => {
     e.preventDefault();
@@ -27,7 +32,7 @@ const User = ({ user }: { user: any }) => {
     }
   };
   const handleDelete = () => {
-    dispatchUserEvent("REMOVE_USER", { userId: user.id });
+    DispatchUserEvent("REMOVE_USER", { userId: user.id });
   };
 
   const handleHide = () => {
@@ -40,43 +45,49 @@ const User = ({ user }: { user: any }) => {
   };
 
   return (
-    <div className="user m-2 position-relative">
+    <div className="user m-2 position-relative py-4">
       <div className="p-3 p-lg-4">
-        <div className="student-data mb-3 text-center">
-          <h1>{user.id}</h1>
-          <h3>{user.name}</h3>
-          <h4>{user.age}</h4>
-          <div className="student-bio">
-            <small>{user.bio}</small>
+        <div className="student-data mb-3 d-lg-flex flex-lg-column align-items-lg-center">
+          <div className="common-div name d-flex">
+            <div className="name">{"Name"}</div>
+            <h5 className="ps-3">{user.name}</h5>
+          </div>
+          <div className="common-div age d-flex">
+            <div className="age">{"Age"}</div>
+            <h5 className="ps-3">{user.age}</h5>
+          </div>
+          <div className="common-div student-bio d-flex">
+            <div className="bio">{"Bio"}</div>
+            <small className="ps-3">{user.bio}</small>
           </div>
         </div>
 
-        <div className="student-btns text-center">
+        <div className="student-btns text-lg-center d-flex flex-column align-items-lg-center">
           <button
-            className="me-lg-2 mb-3 mb-lg-0 common-button-style-1"
+            className="me-lg-2 mx-2 mb-3 common-button-style-1"
             onClick={() => navigate(`/edit/${user.id}`)}
           >
             Edit student
           </button>
-          <button className="common-button-style-1" onClick={handleRemoveUser}>
+          <Button className="mx-2" variant="primary" onClick={handleShow}>
             Delete student
-          </button>
+          </Button>
         </div>
       </div>
-      <div
-        className={`confirm-delete position-absolute ${
-          popup.show === false ? "d-none" : "d-flex"
-        }`}
-      >
-        <div className="btn-wrap">
-          <button onClick={handleHide} className="me-3">
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Delete Student</Modal.Title>
+        </Modal.Header>
+        <Modal.Body className="d-flex">Confirm delete?</Modal.Body>
+        <Modal.Footer>
+          <Button onClick={handleClose} className="me-3">
             No
-          </button>
-        </div>
-        <div className="btn-wrap">
-          <button onClick={handleDelete}>Yes</button>
-        </div>
-      </div>
+          </Button>
+          <Button variant="primary" onClick={handleDelete}>
+            Yes
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 };
