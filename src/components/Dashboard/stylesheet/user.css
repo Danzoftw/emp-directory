@@ -6,6 +6,7 @@ section.user-list .user-list-data .search-outer input {
   border-radius: 5px;
 }
 section.user-list .user-list-data .user {
+  border-radius: 15px 15px 0 0;
   box-shadow: 0px 0px 7px #e1d4d4;
 }
 section.user-list .user-list-data .user button {
@@ -23,8 +24,19 @@ section.user-list .user-list-data .user .confirm-delete button {
   border-radius: 15px;
   padding: 4px 12px 4px 12px;
 }
+section.user-list .user-list-data .user .student-data {
+  background: #8d7e7e;
+  border-radius: 15px 15px 0 0;
+}
 section.user-list .user-list-data .user .student-data .common-div .name,
 section.user-list .user-list-data .user .student-data .common-div .age,
 section.user-list .user-list-data .user .student-data .common-div .bio {
   width: 50px;
+}
+.delete-modal .modal-dialog {
+  position: absolute;
+  left: 50%;
+  width: 100%;
+  top: 50%;
+  transform: translate(-50%, -50%) !important;
 }

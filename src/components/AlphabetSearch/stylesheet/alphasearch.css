@@ -1,0 +1,52 @@
+.alphabets-container .user-logo {
+  padding-right: 1px;
+}
+.alphabets-container .user-logo span {
+  width: 34px;
+  margin-right: 2px;
+  margin-left: 2px;
+  padding: 5px 12px 5px 12px;
+  cursor: pointer;
+}
+@media (min-width: 576px) {
+  .alphabets-container .user-logo span {
+    width: 35px;
+    height: 35px;
+  }
+}
+@media (min-width: 1024px) {
+  .alphabets-container .user-logo span {
+    width: 36px;
+    height: 36px;
+  }
+}
+@media (min-width: 1440px) {
+  .alphabets-container .user-logo span {
+    margin-bottom: 0px;
+    width: 50px;
+    height: 50px;
+  }
+}
+.alphabets-container .search-alphabets li {
+  cursor: pointer;
+  margin-bottom: 4px;
+}
+@media (min-width: 576px) {
+  .alphabets-container .search-alphabets li {
+    width: 35px;
+    height: 35px;
+  }
+}
+@media (min-width: 1024px) {
+  .alphabets-container .search-alphabets li {
+    width: 36px;
+    height: 36px;
+  }
+}
+@media (min-width: 1440px) {
+  .alphabets-container .search-alphabets li {
+    margin-bottom: 0px;
+    width: 50px;
+    height: 50px;
+  }
+}

@@ -1,0 +1,54 @@
+//Authentication component
+section.authentication {
+  .toggler {
+    // max-width: 100px;
+    button {
+      max-width: 150px;
+      font-family: "Roboto";
+      border-radius: 15px;
+      margin: 0 auto;
+      border: none;
+      box-shadow: 0px 0px 4px #c18a8a;
+      background-color: transparent;
+    }
+  }
+}
+
+@keyframes mymove {
+  from {
+    font-size: 1rem;
+  }
+  to {
+    font-size: 0rem;
+  }
+}
+
+//Registration component
+section.registration-outer {
+  max-width: 500px;
+  .reg-succ {
+    span {
+      &.add-reg-succ {
+        animation: mymove 3s normal forwards ease-in-out;
+      }
+    }
+  }
+  button {
+    max-width: 100px;
+  }
+}
+
+.color-red {
+  color: red !important;
+}
+
+.color-black {
+  color: black !important;
+}
+
+//Logout component
+section.logout {
+  button {
+    border: none;
+  }
+}

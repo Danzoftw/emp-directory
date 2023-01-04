@@ -12,6 +12,7 @@ section.user-list {
       }
     }
     .user {
+      border-radius: 15px 15px 0 0;
       button {
         outline: none;
       }
@@ -29,6 +30,8 @@ section.user-list {
         }
       }
       .student-data {
+        background: #8d7e7e;
+        border-radius: 15px 15px 0 0;
         .common-div {
           .name,
           .age,
@@ -38,5 +41,16 @@ section.user-list {
         }
       }
     }
+  }
+}
+
+// MODAL
+.delete-modal {
+  .modal-dialog {
+    position: absolute;
+    left: 50%;
+    width: 100%;
+    top: 50%;
+    transform: translate(-50%, -50%) !important;
   }
 }

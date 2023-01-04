@@ -1,44 +1,82 @@
-import React, { useState } from "react";
-import AddUser from "./components/Operations/AddUser";
-import EditUser from "./components/Operations/EditUser";
-import UserList from "./components/Dashboard/UserList";
-// import Filter from "./components/Filter/Filter";
+import React, { useState, useEffect } from "react";
 import { AppContext } from "./context/context";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Header from "./components/Header/Header";
+import Search from "./components/Search/Search";
 import UseLocalStorage from "./components/LocalStorage/UseLocalStorage";
-// import "./fonts/Apercu/Apercu-Bold.ttf";
-// import "./fonts/Apercu/ApercuPro-Bold.ttf";
 
 function App() {
-  const [users, setUsers] = UseLocalStorage("students", []);
-  // const [users, setUsers] = ("students", []);
+  const [employee, setEmployee] = UseLocalStorage("employees", []);
+  const [filterInput, setFilterInput] = useState("");
+  const [userAlphabet, setUserAlphabet] = useState("");
+  const [userPref, setUserPref] = useState("");
+  const [filterSelect, setFilterSelect] = useState({
+    filterOption: "",
+    MainDepartment: "",
+  });
+
+  const [toggler, setToggler] = useState(false);
 
   const DispatchUserEvent = (actionType: any, payload: any) => {
     switch (actionType) {
-      case "ADD_USER":
-        setUsers([...users, payload.newUser]);
+      case "ADD_EMPLOYEE":
+        const data = payload.state;
+        setEmployee([...employee, data]);
         return;
-      case "REMOVE_USER":
-        setUsers(
-          users.filter((user: { id: any }) => user.id !== payload.userId)
+      case "REMOVE_EMPLOYEE":
+        setEmployee(
+          employee.filter(
+            (employee: { id: any }) => employee.id !== payload.userId
+          )
         );
         return;
-      case "EDIT_USER":
-        setUsers(
-          users.map((obj: { id: any }) => {
-            if (obj.id === payload.editedUser.id) {
+      case "EDIT_EMPLOYEE":
+        console.log("edit payload", payload);
+        setEmployee(
+          employee.map((obj: { id: any }) => {
+            if (obj.id === payload.state.id) {
               return {
                 ...obj,
-                name: payload.editedUser.name,
-                age: payload.editedUser.age,
-                bio: payload.editedUser.bio,
+                firstName: payload.state.firstName,
+                lastName: payload.state.lastName,
+                preferredName: payload.state.preferredName,
+                email: payload.state.email,
+                jobTitle: payload.state.jobTitle,
+                office: payload.state.office,
+                department: payload.state.department,
+                phoneNumber: payload.state.phoneNumber,
+                skype: payload.state.skype,
               };
             }
             return obj;
           })
         );
+
         return;
+      case "ADD_FILTER_KEY":
+        const input = payload.state;
+        setFilterInput(input);
+        setToggler(true);
+        return;
+      case "EMPLOYEE_ALPHABET":
+        const alphabet = payload.state.toLowerCase();
+        setUserAlphabet(alphabet);
+        setToggler(true);
+        return;
+      case "USER_DROP_SELECT":
+        const preference = payload.state;
+        setUserPref(preference);
+        return;
+      case "USER_FILTER_OPTION_SELECT":
+        const filter = payload.state;
+        setFilterSelect({
+          ...filterSelect,
+          filterOption: filter.filterOption,
+          MainDepartment: filter.MainDepartment,
+        });
+        setToggler(false);
+        return;
+
       default:
         return;
     }
@@ -46,14 +84,21 @@ function App() {
 
   return (
     <div className="App">
-      <AppContext.Provider value={{ users, setUsers, DispatchUserEvent }}>
+      <AppContext.Provider
+        value={{
+          DispatchUserEvent,
+          employee,
+          filterInput,
+          userAlphabet,
+          userPref,
+          filterSelect,
+          toggler,
+        }}
+      >
+        <Header />
+        <Search />
         <BrowserRouter>
-          <Header />
-          <Routes>
-            <Route path="/" element={<AddUser />} />
-            <Route path="/userlist/" element={<UserList />} />
-            <Route path="/edit/:id" element={<EditUser />} />
-          </Routes>
+          <Routes></Routes>
         </BrowserRouter>
       </AppContext.Provider>
     </div>

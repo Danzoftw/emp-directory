@@ -4,6 +4,8 @@ import { AppContext } from "../../context/context";
 import { useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import Placeholder from "react-bootstrap/Placeholder";
+import Card from "react-bootstrap/Card";
 
 const User = ({ user }: { user: any }) => {
   const [show, setShow] = useState(false);
@@ -22,7 +24,7 @@ const User = ({ user }: { user: any }) => {
     e.preventDefault();
     setPopup({
       show: true,
-      id: user.id,
+      id: user?.id,
     });
     if (popup.show && popup.id) {
       setPopup({
@@ -32,7 +34,7 @@ const User = ({ user }: { user: any }) => {
     }
   };
   const handleDelete = () => {
-    DispatchUserEvent("REMOVE_USER", { userId: user.id });
+    DispatchUserEvent("REMOVE_USER", { userId: user?.id });
   };
 
   const handleHide = () => {
@@ -45,27 +47,27 @@ const User = ({ user }: { user: any }) => {
   };
 
   return (
-    <div className="user m-2 position-relative py-4">
-      <div className="p-3 p-lg-4">
-        <div className="student-data mb-3 d-lg-flex flex-lg-column ">
+    <div className="user m-2 position-relative pb-4">
+      <div className="pb-3 pb-lg-4">
+        <div className="student-data mb-3 d-lg-flex flex-lg-column p-3">
           <div className="common-div name d-flex">
             <div className="name">{"Name"}</div>
-            <h5 className="ps-3">{user.name}</h5>
+            <h5 className="ps-3">{user?.name}</h5>
           </div>
           <div className="common-div age d-flex">
             <div className="age">{"Age"}</div>
-            <h5 className="ps-3">{user.age}</h5>
+            <h5 className="ps-3">{user?.age}</h5>
           </div>
           <div className="common-div student-bio d-flex">
             <div className="bio">{"Bio"}</div>
-            <small className="ps-3">{user.bio}</small>
+            <small className="ps-3">{user?.bio}</small>
           </div>
         </div>
 
         <div className="student-btns text-lg-center d-flex flex-column align-items-lg-center">
           <button
             className="me-lg-2 mx-2 mb-3 common-button-style-1"
-            onClick={() => navigate(`/edit/${user.id}`)}
+            onClick={() => navigate(`/edit/${user?.id}`)}
           >
             Edit student
           </button>
@@ -74,7 +76,8 @@ const User = ({ user }: { user: any }) => {
           </Button>
         </div>
       </div>
-      <Modal show={show} onHide={handleClose}>
+
+      <Modal show={show} onHide={handleClose} className="delete-modal">
         <Modal.Header closeButton>
           <Modal.Title>Delete Student</Modal.Title>
         </Modal.Header>

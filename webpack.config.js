@@ -43,6 +43,10 @@ module.exports = {
                 test: /\.(woff2|woff|eot|ttf|otf)$/,
                 use: ["file-loader"],
             },
+            {
+                test: /\.(png|jp(e*)g|svg|gif)$/,
+                type: "asset/resource",
+            },
         ]
     },
     devServer: {

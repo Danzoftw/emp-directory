@@ -1,0 +1,71 @@
+.search-container {
+  display: block;
+  .search-input-box {
+    input {
+      border: 1px solid #938787;
+      padding: 5px 10px 5px 20px;
+      @media (min-width: 768px) {
+        width: 150px;
+        padding: 5px 0px 5px 10px;
+      }
+      @media (min-width: 1200px) {
+        width: unset;
+        padding: 5px 35px 5px 20px;
+      }
+      @media (min-width: 1440px) {
+        width: 360px;
+        padding: 5px 35px 5px 20px;
+      }
+    }
+  }
+  .filter-dropdown {
+    .dropdown {
+      width: 200px;
+      position: relative;
+      button {
+        padding: 5px 10px 5px 20px;
+        display: inline-flex;
+        width: 100%;
+        background-color: #ffffff;
+        border-radius: 0px;
+        border: 1px solid #938787;
+        color: #938787;
+        @media (min-width: 1200px) {
+          padding: 5px 10px 5px 10px;
+        }
+        &:after {
+          position: absolute;
+          right: 10px;
+          top: 50%;
+          transform: translateY(-50%);
+          font-size: 25px;
+        }
+      }
+    }
+  }
+  .clear {
+    button {
+      padding-left: 10px;
+      padding-right: 10px;
+      @media (min-width: 1024px) {
+        padding-left: 25px;
+        padding-right: 25px;
+      }
+      @media (min-width: 1440px) {
+        padding-left: 30px;
+        padding-right: 30px;
+      }
+    }
+  }
+  .add-btn {
+    // padding: 5px 10px 5px 10px;
+    font-weight: 500;
+    border: none;
+    font-size: 0.813rem;
+    @media (min-width: 1200px) {
+    }
+    @media (min-width: 1440px) {
+      font-size: 1rem;
+    }
+  }
+}

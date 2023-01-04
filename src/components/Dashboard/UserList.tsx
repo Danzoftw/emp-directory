@@ -7,15 +7,13 @@ const UserList = () => {
   const [input, setInput] = useState("");
   const { users } = useContext(AppContext);
   let lowerCaseInput = input.toLocaleLowerCase();
-  const filteredData = users.filter((item: any) =>
-    item.name.toLowerCase().includes(lowerCaseInput)
-  );
+  const filteredData = users
+    ? users?.filter((item: any) =>
+        item.name.toLowerCase().includes(lowerCaseInput)
+      )
+    : "no data";
   return (
     <section className="user-list">
-      <div className="title text-center">
-        <h3>Available Students</h3>
-      </div>
-
       <div className="user-list-data">
         <div className="container">
           <div className="search-outer">
@@ -32,10 +30,10 @@ const UserList = () => {
             </div>
           </div>
           <div className="row">
-            {filteredData.map((user: { id: React.Key | null | undefined }) => (
+            {filteredData?.map((user: { id: React.Key | null | undefined }) => (
               <div className="col-12 col-md-6 col-lg-4 col-xl-3 px-lg-0 px-md-0 py-2 py-lg-0">
                 <Suspense fallback={<div>Loading...</div>}>
-                  <User key={user.id} user={user} />
+                  <User key={user?.id} user={user} />
                 </Suspense>
               </div>
             ))}

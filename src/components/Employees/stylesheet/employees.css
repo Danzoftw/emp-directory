@@ -1,0 +1,29 @@
+section.employees .employees-inner-container {
+  border: 1px solid #e9e8e8;
+}
+section.employees .employees-inner-container .card {
+  background-color: #e9e8e8;
+  border-radius: 0px;
+  border: none;
+}
+section.employees .employees-inner-container .card .image {
+  width: 60px;
+  height: 90px;
+}
+section.employees .employees-inner-container .card .image img {
+  object-fit: cover;
+}
+section.employees .employees-inner-container .card .card-body .card-title {
+  font-size: 1rem;
+}
+section.employees .employees-inner-container .card .card-body .card-subtitle {
+  max-width: 155px;
+  font-size: 0.825rem;
+}
+section.employees .employees-inner-container .card .card-body .socials-icons .common-icon {
+  max-width: 15px;
+}
+section.employees .employees-inner-container .card .card-body .socials-icons .common-icon.employee-call img {
+  padding: 3px;
+  border-radius: 3px;
+}
