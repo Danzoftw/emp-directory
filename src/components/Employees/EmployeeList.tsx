@@ -96,6 +96,7 @@ const EmployeeList = (
             onHide={handleClose}
             aria-labelledby="contained-modal-title-vcenter"
             centered
+            className="modal-xl"
           >
             <Modal.Header closeButton>
               <Modal.Title>Edit Employee</Modal.Title>

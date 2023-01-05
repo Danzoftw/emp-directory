@@ -30,8 +30,6 @@ const EmployeeForm = (props: {
     id,
   } = props;
 
-  const { employee } = useContext(AppContext);
-
   return (
     <Form onSubmit={handleSubmit}>
       <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -74,6 +72,9 @@ const EmployeeForm = (props: {
             type="email"
             placeholder="Enter email"
           />
+          <Form.Text className="text-muted">
+            We'll never share your email with anyone else.
+          </Form.Text>
         </div>
         <div className="jobTitle mb-3">
           <Form.Label>Job Title</Form.Label>
@@ -127,13 +128,10 @@ const EmployeeForm = (props: {
             placeholder="Skype ID"
           />
         </div>
-        <Form.Text className="text-muted">
-          We'll never share your email with anyone else.
-        </Form.Text>
       </Form.Group>
 
       <Button variant="primary" type="submit">
-        Submit
+        Save
       </Button>
     </Form>
   );

@@ -27,3 +27,13 @@ section.employees .employees-inner-container .card .card-body .socials-icons .co
   padding: 3px;
   border-radius: 3px;
 }
+section.employees .employees-inner-container .card:hover .operations {
+  opacity: 1;
+}
+section.employees .employees-inner-container .card .operations {
+  transition: all 0.5s ease;
+  opacity: 0;
+}
+.modal-body {
+  display: block;
+}

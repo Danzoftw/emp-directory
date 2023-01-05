@@ -3,7 +3,6 @@ import { Button } from "react-bootstrap";
 import Dropdown from "react-bootstrap/Dropdown";
 import Modal from "react-bootstrap/Modal";
 import DropdownButton from "react-bootstrap/DropdownButton";
-import Form from "react-bootstrap/Form";
 import { AppContext } from "../../context/context";
 import "./stylesheet/keysearch.css";
 import AddEmployee from "../AddEmployee/AddEmployee";
@@ -116,7 +115,7 @@ const KeySearch = () => {
                 aria-labelledby="contained-modal-title-vcenter"
                 centered
               >
-                <Modal.Header closeButton>
+                <Modal.Header closeButton className="px-5 mx-5">
                   <Modal.Title>Add Employee</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
